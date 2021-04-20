@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from static_sitemaps.generator import generate_sitemap
+from static_sitemaps.tasks import generate_sitemap
 
 __author__ = 'xaralis'
 

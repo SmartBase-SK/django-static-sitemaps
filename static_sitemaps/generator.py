@@ -199,14 +199,3 @@ class SitemapGenerator(object):
                     self.out("Compress %s file error" % path)
 
         return file_lastmod
-
-
-def generate_sitemap(verbosity):
-    if not conf.MOCK_SITE:
-        from django.contrib.sites.models import Site
-        for site in Site.objects.all():
-            generator = SitemapGenerator(verbosity=verbosity, site=site)
-            generator.write()
-    else:
-        generator = SitemapGenerator(verbosity=verbosity)
-        generator.write()
