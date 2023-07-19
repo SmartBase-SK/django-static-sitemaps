@@ -6,13 +6,13 @@ from static_sitemaps.generator import SitemapGenerator
 
 __author__ = 'xaralis'
 
-# Create class conditionally so the task can be bypassed when repetition 
+# Create class conditionally so the task can be bypassed when repetition
 # is set to something which evaluates to False.
 if conf.CELERY_TASK_SCHEDULE:
     current_app.conf.beat_schedule.update({
         'generate_sitemaps': {
             'task': 'generate_sitemap',
-            'schedule': crontab()
+            'schedule': conf.CELERY_TASK_SCHEDULE
         },
     })
 
